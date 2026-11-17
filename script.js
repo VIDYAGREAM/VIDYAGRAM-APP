@@ -29,7 +29,7 @@ const activeApps = [
         name: "Physics Wallah",
         img: "https://i.postimg.cc/ZRMVR91P/image-search-1791519463252.webp",
         servers: [
-            { name: "Server 1", url: "https://madxrohitbihar-app.github.io/Physics-pro/" },
+            { name: "Server 1", url: "https://physicspro.madxrohitbihar-1ce.workers.dev/" },
             { name: "Server 2", url: "https://vidcloud.eu.org/#batches" },
             { name: "Server 3", url: "https://www.learnxpw.site/study/batches" }
         ]

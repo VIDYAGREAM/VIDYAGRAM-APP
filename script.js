@@ -78,33 +78,11 @@ function showToast(msg) {
     setTimeout(() => toast.classList.remove('show'), 2000);
 }
 
-// DEVICE VERIFICATION SYSTEM FUNCTIONS
+// DEVICE VERIFICATION SYSTEM FUNCTIONS (Updated Arolinks URL)
 function openAroLinks() {
-    const apiToken = "0aa19e644db340e405f3b7654cdc70f70d705966";
-    const targetUrl = "https://vidyagramkey.madxrohitbihar-1ce.workers.dev/";
-    const apiUrl = `https://arolinks.com/api?api=${apiToken}&url=${encodeURIComponent(targetUrl)}`;
-
-    const msgDiv = document.getElementById("status-msg");
-    msgDiv.style.color = "var(--neon-cyan)";
-    msgDiv.innerText = "Generating Link...";
-    showToast("Generating Access Link...");
-    
-    fetch(apiUrl)
-        .then(response => response.json())
-        .then(data => {
-            if (data.status === "success" && data.shortenedUrl) {
-                window.location.href = data.shortenedUrl;
-            } else {
-                msgDiv.style.color = "#ff4444";
-                msgDiv.innerText = "Error generating link!";
-                showToast("Error generating link!");
-            }
-        })
-        .catch(() => {
-            msgDiv.style.color = "#ff4444";
-            msgDiv.innerText = "Network Error!";
-            showToast("Network Error!");
-        });
+    const targetUrl = "https://arolinks.com/asbP";
+    showToast("Opening Key Link...");
+    window.open(targetUrl, '_blank');
 }
 
 function verifyUserKey() {
@@ -335,7 +313,6 @@ function filterApps() {
     });
 }
 
-// BFCache and Back Navigation handling to instantly show portal without splash screen
 window.addEventListener('pageshow', function(event) {
     const splash = document.getElementById("splash-screen");
     if (splash) {

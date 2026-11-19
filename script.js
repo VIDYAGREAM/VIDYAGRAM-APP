@@ -78,66 +78,6 @@ function showToast(msg) {
     setTimeout(() => toast.classList.remove('show'), 2000);
 }
 
-// DEVICE VERIFICATION SYSTEM FUNCTIONS (Updated Arolinks URL)
-function openAroLinks() {
-    const targetUrl = "https://arolinks.com/asbP";
-    showToast("Opening Key Link...");
-    window.open(targetUrl, '_blank');
-}
-
-function verifyUserKey() {
-    const userKey = document.getElementById("accessKeyInput").value.trim().toUpperCase();
-    const msgDiv = document.getElementById("status-msg");
-    
-    const targetLen = 20; 
-    if (userKey.length !== targetLen || !userKey.startsWith("MAD") || !userKey.endsWith("APP")) {
-        msgDiv.style.color = "#ff4444";
-        msgDiv.innerText = "⚠️ Invalid Access Key!";
-        showToast("⚠️ Invalid Access Key!");
-        return;
-    }
-
-    let usedKeys = JSON.parse(localStorage.getItem("usedKeysRegistry")) || {};
-    const currentTime = new Date().getTime();
-
-    if (usedKeys[userKey]) {
-        msgDiv.style.color = "#ff4444";
-        msgDiv.innerText = "⚠️ This key has already been used! Please generate a new key.";
-        showToast("⚠️ Key already used!");
-        return;
-    }
-
-    usedKeys[userKey] = currentTime;
-    localStorage.setItem("usedKeysRegistry", JSON.stringify(usedKeys));
-
-    const keyExpiryDuration = 24 * 60 * 60 * 1000; // 24 Hours
-    const globalExpiryTime = currentTime + keyExpiryDuration; 
-    localStorage.setItem("appAuthExpiry", globalExpiryTime);
-    
-    msgDiv.style.color = "var(--neon-green)";
-    msgDiv.innerText = "Portal Unlocked Successfully!";
-    showToast("Portal Unlocked Successfully!");
-
-    setTimeout(() => {
-        document.getElementById("authScreenWrapper").style.display = "none";
-    }, 600);
-}
-
-function checkAuthStatus() {
-    const expiryTime = localStorage.getItem("appAuthExpiry");
-    const currentTime = new Date().getTime();
-    const isVerified = expiryTime && currentTime < expiryTime;
-
-    const authWrapper = document.getElementById('authScreenWrapper');
-    if (authWrapper) {
-        if (isVerified) {
-            authWrapper.style.display = 'none';
-        } else {
-            authWrapper.style.display = 'flex';
-        }
-    }
-}
-
 function renderApps() {
     const activeContainer = document.getElementById('tab-active');
     if (activeContainer) {
@@ -313,12 +253,12 @@ function filterApps() {
     });
 }
 
+// BFCache and Back Navigation handling to instantly show portal without splash screen
 window.addEventListener('pageshow', function(event) {
     const splash = document.getElementById("splash-screen");
     if (splash) {
         splash.classList.add("hide-splash");
     }
-    checkAuthStatus();
     renderApps();
 });
 
@@ -330,8 +270,6 @@ document.addEventListener("DOMContentLoaded", function () {
         if (splash) {
             splash.classList.add("hide-splash");
         }
-
-        checkAuthStatus();
 
         if (!sessionStorage.getItem("popupShownOnce")) {
             if (popupModal) {

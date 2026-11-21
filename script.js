@@ -4,7 +4,8 @@ const activeApps = [
         name: "Disha Online Classes",
         img: "https://i.postimg.cc/L83KSY0N/image-search-1794827319389.png",
         servers: [
-            { name: "Server 1", url: "https://primeverse.eu.cc/disha" }
+            { name: "Server 1", url: "https://gb-study-dishaonlineclasses.ai.studio/" },
+            { name: "Server 2", url: "https://primeverse.eu.cc/disha" }
         ]
     },
     {
@@ -12,7 +13,8 @@ const activeApps = [
         name: "Eduteria",
         img: "https://i.postimg.cc/13xCjMbD/image-search-1787721768673.webp",
         servers: [
-            { name: "Server 1", url: "https://all.codewithvivek.qzz.io/eduteria" }
+            { name: "Server 1", url: "https://all.codewithvivek.qzz.io/eduteria" },
+            { name: "Server 2", url: "https://gbstudyeduteriya.pages.dev/" }
         ]
     },
     {
@@ -21,7 +23,15 @@ const activeApps = [
         img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuCiwfy76ica73byqKIURXqN2Zi2h2Sdw0VJooGkXsyg&s",
         servers: [
             { name: "Server 1", url: "https://www.study-mate.in/batches" },
-            { name: "Server 2", url: "https://primeverse.eu.cc/khan-gs" }
+            { name: "Server 2", url: "https://gbstudykhangs.pages.dev/courses" }
+        ]
+    },
+    {
+        id: 82,
+        name: "Master Sahab",
+        img: "https://i.postimg.cc/MZh3VGzC/image-search-1795237419691.jpg",
+        servers: [
+            { name: "Server 1", url: "https://gbmastersahab-3sk.pages.dev/" }
         ]
     },
     {
@@ -31,7 +41,8 @@ const activeApps = [
         servers: [
             { name: "Server 1", url: "https://physicspro.madxrohitbihar-1ce.workers.dev/" },
             { name: "Server 2", url: "https://vidcloud.eu.org/#batches" },
-            { name: "Server 3", url: "https://www.learnxpw.site/study/batches" }
+            { name: "Server 3", url: "https://www.learnxpw.site/study/batches" },
+            { name: "Server 4", url: "https://pw.muftukmall.in/" }
         ]
     },
     {
@@ -40,7 +51,7 @@ const activeApps = [
         img: "https://i.postimg.cc/MphZTcLR/image-search-1783742533521.jpg",
         servers: [
             { name: "Server 1", url: "https://studybeepro.site/sachinacademy/" },
-            { name: "Server 2", url: "https://primeverse.eu.cc/sachin-academy" }
+            { name: "Server 2", url: "https://gbstudysachinacademy.pages.dev/" }
         ]
     },
     {
@@ -49,7 +60,7 @@ const activeApps = [
         img: "https://i.postimg.cc/gksdc0cV/image-search-1791027234501.jpg",
         servers: [
             { name: "Server 1", url: "https://studybeepro.site/sf/" },
-            { name: "Server 2", url: "https://primeverse.eu.cc/science-fun" }
+            { name: "Server 2", url: "https://gbstudyscienceandfun.pages.dev/" }
         ]
     },
     {
@@ -59,7 +70,16 @@ const activeApps = [
         servers: [
             { name: "Server 1", url: "https://studybeepro.site/vidyagram/" },
             { name: "Server 2", url: "https://ais-pre-a5hvjqc66aerxlyco5jzkx-49225910278.asia-east1.run.app/" },
-            { name: "Server 3", url: "https://primeverse.eu.cc/vidyagram" }
+            { name: "Server 3", url: "https://gbstudyvidyagram.pages.dev/" }
+        ]
+    },
+    {
+        id: 81,
+        name: "Yes Officer",
+        img: "https://i.postimg.cc/9QHPFRct/image-search-1795237288784.jpg",
+        servers: [
+            { name: "Server 1", url: "https://gbstudyyesofficer.pages.dev/" },
+            { name: "Server 2", url: "https://studybeepro.site/yesoff/" }
         ]
     }
 ];

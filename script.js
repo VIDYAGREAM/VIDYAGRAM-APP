@@ -69,7 +69,7 @@ const activeApps = [
         img: "https://i.postimg.cc/PqbrQWnH/image-search-1791123215735.png",
         servers: [
             { name: "Server 1", url: "https://studybeepro.site/vidyagram/" },
-            { name: "Server 2", url: "https://ais-pre-a5hvjqc66aerxlyco5jzkx-49225910278.asia-east1.run.app/" },
+            { name: "Server 2", url: "https://vidya.spidystudy.eu.cc/" },
             { name: "Server 3", url: "https://gbstudyvidyagram.pages.dev/" }
         ]
     },

@@ -70,7 +70,7 @@ const activeApps = [
         servers: [
             { name: "Server 1", url: "https://studybeepro.site/vidyagram/" },
             { name: "Server 2", url: "https://vidya.spidystudy.eu.cc/" },
-            { name: "Server 3", url: "https://gbstudyvidyagram.pages.dev/" }
+            { name: "Server 3", url: "http://vgstudyhulk.vercel.app/getkey" }
         ]
     },
     {

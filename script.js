@@ -98,6 +98,88 @@ function showToast(msg) {
     setTimeout(() => toast.classList.remove('show'), 2000);
 }
 
+// DEVICE VERIFICATION SYSTEM FUNCTIONS
+function openAroLinks() {
+    const apiToken = "0aa19e644db340e405f3b7654cdc70f70d705966";
+    const targetUrl = "https://madxrohitbihar-app.github.io/VIDYAGRAM-KYE/";
+    const apiUrl = `https://arolinks.com/api?api=${apiToken}&url=${encodeURIComponent(targetUrl)}`;
+
+    const msgDiv = document.getElementById("status-msg");
+    msgDiv.style.color = "var(--neon-cyan)";
+    msgDiv.innerText = "Generating Link...";
+    showToast("Generating Access Link...");
+
+    fetch(apiUrl)
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === "success" && data.shortenedUrl) {
+                window.location.href = data.shortenedUrl;
+            } else {
+                msgDiv.style.color = "#ff4444";
+                msgDiv.innerText = "Error generating link!";
+                showToast("Error generating link!");
+            }
+        })
+        .catch(() => {
+            msgDiv.style.color = "#ff4444";
+            msgDiv.innerText = "Network Error!";
+            showToast("Network Error!");
+        });
+}
+
+function verifyUserKey() {
+    const userKey = document.getElementById("accessKeyInput").value.trim().toUpperCase();
+    const msgDiv = document.getElementById("status-msg");
+
+    const targetLen = 20;
+    if (userKey.length !== targetLen || !userKey.startsWith("MAD") || !userKey.endsWith("APP")) {
+        msgDiv.style.color = "#ff4444";
+        msgDiv.innerText = "⚠️ Invalid Access Key!";
+        showToast("⚠️ Invalid Access Key!");
+        return;
+    }
+
+    let usedKeys = JSON.parse(localStorage.getItem("usedKeysRegistry")) || {};
+    const currentTime = new Date().getTime();
+
+    if (usedKeys[userKey]) {
+        msgDiv.style.color = "#ff4444";
+        msgDiv.innerText = "⚠️ This key has already been used! Please generate a new key.";
+        showToast("⚠️ Key already used!");
+        return;
+    }
+
+    usedKeys[userKey] = currentTime;
+    localStorage.setItem("usedKeysRegistry", JSON.stringify(usedKeys));
+
+    const keyExpiryDuration = 24 * 60 * 60 * 1000; // 24 Hours
+    const globalExpiryTime = currentTime + keyExpiryDuration;
+    localStorage.setItem("appAuthExpiry", globalExpiryTime);
+
+    msgDiv.style.color = "var(--neon-green)";
+    msgDiv.innerText = "Portal Unlocked Successfully!";
+    showToast("Portal Unlocked Successfully!");
+
+    setTimeout(() => {
+        document.getElementById("authScreenWrapper").style.display = "none";
+    }, 600);
+}
+
+function checkAuthStatus() {
+    const expiryTime = localStorage.getItem("appAuthExpiry");
+    const currentTime = new Date().getTime();
+    const isVerified = expiryTime && currentTime < expiryTime;
+
+    const authWrapper = document.getElementById('authScreenWrapper');
+    if (authWrapper) {
+        if (isVerified) {
+            authWrapper.style.display = 'none';
+        } else {
+            authWrapper.style.display = 'flex';
+        }
+    }
+}
+
 function renderApps() {
     const activeContainer = document.getElementById('tab-active');
     if (activeContainer) {
@@ -176,7 +258,7 @@ function handleAppClick(appId) {
 
     logoEl.src = app.img;
     titleEl.innerText = `${app.name} - Servers`;
-    
+
     buttonsContainer.innerHTML = app.servers.map(server => `
         <a href="${server.url}" target="_blank" class="btn-social btn-server" onclick="closeServerModal()">
             <i class="fa-solid fa-server"></i> ${server.name}
@@ -208,7 +290,7 @@ function setTheme(themeName) {
 function updateCounts() {
     const countEl = document.getElementById('header-count');
     if (!countEl) return;
-    
+
     if (currentTab === 'active') {
         countEl.innerText = `${activeApps.length} Available`;
     } else {
@@ -279,6 +361,7 @@ window.addEventListener('pageshow', function(event) {
     if (splash) {
         splash.classList.add("hide-splash");
     }
+    checkAuthStatus();
     renderApps();
 });
 
@@ -290,6 +373,8 @@ document.addEventListener("DOMContentLoaded", function () {
         if (splash) {
             splash.classList.add("hide-splash");
         }
+
+        checkAuthStatus();
 
         if (!sessionStorage.getItem("popupShownOnce")) {
             if (popupModal) {

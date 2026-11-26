@@ -5,7 +5,7 @@ const activeApps = [
         img: "https://i.postimg.cc/L83KSY0N/image-search-1794827319389.png",
         servers: [
             { name: "Server 1", url: "https://gb-study-dishaonlineclasses.ai.studio/" },
-            { name: "Server 2", url: "https://primeverse.eu.cc/disha" }
+            { name: "Server 2", url: "https://madxrohitbihar.ai.studio/disha" }
         ]
     },
     {

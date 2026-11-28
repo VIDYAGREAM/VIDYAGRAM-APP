@@ -68,9 +68,7 @@ const activeApps = [
         name: "Vidyagram",
         img: "https://i.postimg.cc/PqbrQWnH/image-search-1791123215735.png",
         servers: [
-            { name: "Server 1", url: "https://studybeepro.site/vidyagram/" },
-            { name: "Server 2", url: "https://vidya.spidystudy.eu.cc/" },
-            { name: "Server 3", url: "http://vgstudyhulk.vercel.app/getkey" }
+            { name: "Server 1", url: "https://madx-vidyagram.ai.studio/" }
         ]
     },
     {
